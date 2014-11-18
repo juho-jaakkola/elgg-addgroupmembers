@@ -33,7 +33,7 @@ function addgroupmembers_title_menu_setup ($hook, $type, $return, $params) {
 				'text' => "<span>$text</span>",
 				'href' => "addgroupmembers/{$group->getGUID()}",
 				'priority' => 100,
-				'class' => 'elgg-button elgg-button-action'
+				'link_class' => 'elgg-button elgg-button-action'
 			);
 			$return[] = ElggMenuItem::factory($options);
 		}
