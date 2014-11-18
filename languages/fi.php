@@ -6,7 +6,7 @@ $lang = array(
 	'addgroupmembers:error:nogroup' => 'Ryhmää ei löytynyt',
 	'addgroupmembers:error:cannot_edit' => 'Sinulla ei ole oikeuksia lisätä ryhmään uusia jäseniä',
 	'addgroupmembers:success' => 'Lisättiin valitut käyttäjät ryhmään',
-	
+
 	// Notifications
 	'addgroupmembers:notification:subject' => 'Sinut on lisätty ryhmään',
 	'addgroupmembers:notification:body' => 'Hei %s
