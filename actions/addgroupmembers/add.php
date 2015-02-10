@@ -15,23 +15,29 @@ if (!$group->canEdit()) {
 	forward(REFERER);
 }
 
-foreach ($user_guids as $user_guid) {
-	$user = get_entity($user_guid);
+$users = new ElggBatch('elgg_get_entities' ,array(
+	'type' => 'user',
+	'guids' => $user_guids,
+	'limit' => false,
+));
 
-	if ($user) {
-		if ($group->join($user)) {
-			// Notify user about the new membership
-			$subject = elgg_echo('addgroupmembers:notification:subject');
-			$body = elgg_echo('addgroupmembers:notification:body', array(
-				$user->name,
-				elgg_get_logged_in_user_entity()->name,
-				$group->name,
-				elgg_get_site_entity()->name,
-				$group->getURL(),
-			));
+foreach ($users as $user) {
+	if ($user->isBanned()) {
+		continue;
+	}
 
-			notify_user($user->guid, elgg_get_site_entity()->guid, $subject, $body);
-		}
+	if ($group->join($user)) {
+		// Notify user about the new membership
+		$subject = elgg_echo('addgroupmembers:notification:subject');
+		$body = elgg_echo('addgroupmembers:notification:body', array(
+			$user->name,
+			elgg_get_logged_in_user_entity()->name,
+			$group->name,
+			elgg_get_site_entity()->name,
+			$group->getURL(),
+		));
+
+		notify_user($user->guid, elgg_get_site_entity()->guid, $subject, $body);
 	}
 }
 
