@@ -3,6 +3,7 @@
 $lang = array(
 	'addgroupmembers:add' => 'Add members',
 	'addgroupmembers:add:title' => 'Add new members to the group',
+	'addgroupmembers:error:nousers' => 'Select at least one user',
 	'addgroupmembers:error:nogroup' => 'The group was not found',
 	'addgroupmembers:error:cannot_edit' => 'You do not have the permission to add new members to the group',
 	'addgroupmembers:success' => 'New members added and notified',
