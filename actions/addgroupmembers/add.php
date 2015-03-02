@@ -3,6 +3,11 @@
 $user_guids = get_input('members');
 $group_guid = get_input('group_guid');
 
+if (empty($user_guids)) {
+	register_error(elgg_echo('addgroupmembers:error:nousers'));
+	forward(REFERER);
+}
+
 $group = get_entity($group_guid);
 
 if (!elgg_instanceof($group, 'group')) {
